@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' má %2 bajtů. BIOS PocketStation má 16384 bajtů.",
+		"error.hardware_id": "'%1' není hardwarové ID. Zapište ho jako osm šestnáctkových číslic, například 410000D3.",
+		"error.no_bios": "BIOS PocketStation, %1, nebyl zadán. Bez něj se stroj nemůže spustit.",
+		"error.no_card": "V projektu není žádný soubor paměťové karty.",
+		"error.no_machine": "Na vytvoření stroje nebylo dost paměti.",
+		"error.not_card": "'%1' (%2 bajtů) není paměťová karta, uložená hra ani aplikace PocketStation.",
+		"error.not_read": "Nelze přečíst '%1'.",
+		"error.save_name": "Soubor uložených dat se jmenuje '%1'. Vrátit lze jen soubor, který tento core exportuje, '%2'.",
+		"error.save_size": "'%1' má %2 bajtů. Paměťová karta exportovaná tímto corem má 131072 bajtů.",
+		"firmware.bios": "BIOS PocketStation",
+		"firmware.bios.about": "Vlastní program PocketStation, 16 KB, vyčtený ze skutečného zařízení. Jeho nabídka spouští každou aplikaci, takže bez něj nic neběží.",
+		"setting.hardware_id": "Hardwarové ID",
+		"setting.hardware_id.about": "Sériové číslo PocketStation jako osm šestnáctkových číslic. Každé zařízení má své vlastní a některé hry ho čtou: doprovodná aplikace jedné hry z něj počítá hodnost. Je součástí stroje, takže záznam potřebuje stejnou hodnotu.",
+		"slot.card": "Paměťová karta",
+		"slot.card.help": "Paměťová karta PocketStation: celá karta (.mcd, .mcr, .mc, .mem nebo .bin o velikosti 128 KB), výpis DexDrive (.gme), jedna uložená hra (.mcs) nebo jedna aplikace (.pss). Pokket to pozná podle obsahu souboru. Vlastní nabídka PocketStation, v jejím BIOSu, spouští aplikace na kartě.",
+		"slot.savedata": "Uložená data",
+		"slot.savedata.help": "Paměťová karta, se kterou začít místo karty výše. Je to soubor, který zapisuje Emulátor > Exportovat uložená data... Vraťte ho pod stejným názvem card.mcd, chcete-li pokračovat tam, kde jiný běh skončil. Soubor se nikdy nemění. Nechte prázdné, chcete-li začít s kartou výše."
+	}
+}

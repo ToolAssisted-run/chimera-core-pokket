@@ -1,0 +1,4 @@
+[submodule "extern/pokket"]
+	path = extern/pokket
+	url = https://github.com/mentalfoundry/Pokket
+	shallow = true

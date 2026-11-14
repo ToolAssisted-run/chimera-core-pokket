@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1'은(는) %2바이트입니다. PocketStation BIOS는 16384바이트입니다.",
+		"error.hardware_id": "'%1'은(는) 하드웨어 ID가 아닙니다. 410000D3처럼 16진수 8자리로 쓰세요.",
+		"error.no_bios": "PocketStation BIOS(%1)가 지정되지 않았습니다. 이것이 없으면 기기를 시작할 수 없습니다.",
+		"error.no_card": "프로젝트에 메모리 카드 파일이 없습니다.",
+		"error.no_machine": "기기를 만들 메모리가 부족했습니다.",
+		"error.not_card": "'%1'(%2바이트)은(는) PocketStation 메모리 카드, 저장, 앱 중 어느 것도 아닙니다.",
+		"error.not_read": "'%1'을(를) 읽을 수 없습니다.",
+		"error.save_name": "세이브 데이터 파일 이름이 '%1'입니다. 이 코어가 내보내는 파일 '%2'만 다시 넣을 수 있습니다.",
+		"error.save_size": "'%1'은(는) %2바이트입니다. 이 코어가 내보내는 메모리 카드는 131072바이트입니다.",
+		"firmware.bios": "PocketStation BIOS",
+		"firmware.bios.about": "실제 기기에서 추출한 PocketStation 자체 프로그램(16 KB)입니다. 이 메뉴가 모든 앱을 시작하므로, 이것이 없으면 아무것도 실행되지 않습니다.",
+		"setting.hardware_id": "하드웨어 ID",
+		"setting.hardware_id.about": "PocketStation의 일련번호(16진수 8자리)입니다. 기기마다 다르며, 이를 읽는 게임도 있습니다. 어떤 게임의 연동 앱은 여기서 등급을 정합니다. 기기의 일부이므로 무비에는 같은 값이 필요합니다.",
+		"slot.card": "메모리 카드",
+		"slot.card.help": "PocketStation의 메모리 카드: 카드 전체(.mcd, .mcr, .mc, .mem 또는 128 KB의 .bin), DexDrive 덤프(.gme), 저장 하나(.mcs) 또는 앱 하나(.pss). Pokket은 파일 내용으로 종류를 판단합니다. 카드의 앱은 BIOS에 있는 PocketStation 자체 메뉴가 시작합니다.",
+		"slot.savedata": "세이브 데이터",
+		"slot.savedata.help": "위의 카드 대신 시작할 메모리 카드입니다. 이 파일은 에뮬레이터 > 세이브 데이터 내보내기...가 쓰는 파일입니다. 다른 실행이 멈춘 곳에서 이어서 하려면 같은 이름 card.mcd로 다시 넣으세요. 이 파일은 절대 바뀌지 않습니다. 비워 두면 위의 카드로 시작합니다."
+	}
+}

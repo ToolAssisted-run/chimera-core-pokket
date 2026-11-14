@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' ma %2 bajtów. BIOS PocketStation ma 16384 bajty.",
+		"error.hardware_id": "'%1' nie jest identyfikatorem sprzętu. Wpisz go jako osiem cyfr szesnastkowych, na przykład 410000D3.",
+		"error.no_bios": "Nie podano BIOS-u PocketStation, %1. Bez niego maszyna nie może się uruchomić.",
+		"error.no_card": "W projekcie nie ma pliku karty pamięci.",
+		"error.no_machine": "Zabrakło pamięci, aby utworzyć maszynę.",
+		"error.not_card": "'%1' (%2 bajtów) nie jest kartą pamięci, zapisem ani aplikacją PocketStation.",
+		"error.not_read": "Nie można odczytać '%1'.",
+		"error.save_name": "Plik danych zapisu nazywa się '%1'. Z powrotem można włożyć tylko plik, który eksportuje ten rdzeń, '%2'.",
+		"error.save_size": "'%1' ma %2 bajtów. Karta pamięci wyeksportowana przez ten rdzeń ma 131072 bajty.",
+		"firmware.bios": "BIOS PocketStation",
+		"firmware.bios.about": "Własny program PocketStation, 16 KB, odczytany z prawdziwego urządzenia. Jego menu uruchamia każdą aplikację, więc bez niego nic nie działa.",
+		"setting.hardware_id": "Identyfikator sprzętu",
+		"setting.hardware_id.about": "Numer seryjny PocketStation jako osiem cyfr szesnastkowych. Każde urządzenie ma własny, a niektóre gry go odczytują: aplikacja towarzysząca jednej gry wylicza z niego rangę. Jest częścią maszyny, więc film potrzebuje tej samej wartości.",
+		"slot.card": "Karta pamięci",
+		"slot.card.help": "Karta pamięci PocketStation: cała karta (.mcd, .mcr, .mc, .mem lub .bin o rozmiarze 128 KB), zrzut DexDrive (.gme), jeden zapis (.mcs) albo jedna aplikacja (.pss). Pokket rozpoznaje to po zawartości pliku. Własne menu PocketStation, w jej BIOS-ie, uruchamia aplikacje z karty.",
+		"slot.savedata": "Dane zapisu",
+		"slot.savedata.help": "Karta pamięci, od której zacząć zamiast karty powyżej. To ten plik, który zapisuje Emulator > Eksportuj dane zapisu... Włóż go z powrotem pod tą samą nazwą, card.mcd, aby kontynuować tam, gdzie zatrzymał się inny przebieg. Plik nigdy nie jest zmieniany. Zostaw puste, aby zacząć od karty powyżej."
+	}
+}

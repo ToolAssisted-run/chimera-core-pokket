@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' có %2 byte. BIOS của PocketStation có 16384 byte.",
+		"error.hardware_id": "'%1' không phải là ID phần cứng. Hãy viết nó thành tám chữ số thập lục phân, ví dụ 410000D3.",
+		"error.no_bios": "Chưa cung cấp BIOS của PocketStation, %1. Máy không thể khởi động nếu thiếu nó.",
+		"error.no_card": "Dự án không có tệp thẻ nhớ nào.",
+		"error.no_machine": "Không đủ bộ nhớ để tạo máy.",
+		"error.not_card": "'%1' (%2 byte) không phải là thẻ nhớ, bản lưu hay ứng dụng của PocketStation.",
+		"error.not_read": "Không thể đọc '%1'.",
+		"error.save_name": "Tệp dữ liệu lưu có tên '%1'. Chỉ có thể đặt lại tệp mà core này xuất ra, '%2'.",
+		"error.save_size": "'%1' có %2 byte. Thẻ nhớ do core này xuất ra có 131072 byte.",
+		"firmware.bios": "BIOS của PocketStation",
+		"firmware.bios.about": "Chương trình riêng của PocketStation, 16 KB, đọc ra từ một máy thật. Menu của nó khởi động mọi ứng dụng, nên thiếu nó thì không gì chạy được.",
+		"setting.hardware_id": "ID phần cứng",
+		"setting.hardware_id.about": "Số sê-ri của PocketStation, dưới dạng tám chữ số thập lục phân. Mỗi máy có số riêng, và một số trò chơi đọc nó: ứng dụng đi kèm của một trò chơi tính ra một cấp bậc từ đó. Nó là một phần của máy, nên bản ghi cần cùng giá trị.",
+		"slot.card": "Thẻ nhớ",
+		"slot.card.help": "Thẻ nhớ của PocketStation: cả một thẻ (.mcd, .mcr, .mc, .mem, hoặc một .bin 128 KB), bản sao DexDrive (.gme), một bản lưu (.mcs) hoặc một ứng dụng (.pss). Pokket nhận ra loại nào từ nội dung tệp. Menu riêng của PocketStation, trong BIOS của nó, khởi động các ứng dụng trên thẻ.",
+		"slot.savedata": "Dữ liệu lưu",
+		"slot.savedata.help": "Một thẻ nhớ để bắt đầu thay cho thẻ ở trên. Đây là tệp mà Emulator > Export Save Data... ghi ra. Đặt nó lại dưới cùng tên, card.mcd, để tiếp tục từ chỗ một lần chạy khác đã dừng. Tệp này không bao giờ bị thay đổi. Để trống để bắt đầu với thẻ ở trên."
+	}
+}

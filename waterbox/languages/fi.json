@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' on %2 tavua. PocketStationin BIOS on 16384 tavua.",
+		"error.hardware_id": "'%1' ei ole laitteistotunnus. Kirjoita se kahdeksana heksadesimaalinumerona, esimerkiksi 410000D3.",
+		"error.no_bios": "PocketStationin BIOSia, %1, ei annettu. Kone ei voi käynnistyä ilman sitä.",
+		"error.no_card": "Projektissa ei ole muistikorttitiedostoa.",
+		"error.no_machine": "Muisti ei riittänyt koneen tekemiseen.",
+		"error.not_card": "'%1' (%2 tavua) ei ole PocketStationin muistikortti, tallennus eikä sovellus.",
+		"error.not_read": "Tiedostoa '%1' ei voitu lukea.",
+		"error.save_name": "Tallennustiedoston nimi on '%1'. Vain tämän ytimen viemän tiedoston, '%2', voi panna takaisin.",
+		"error.save_size": "'%1' on %2 tavua. Tämän ytimen viemä muistikortti on 131072 tavua.",
+		"firmware.bios": "PocketStationin BIOS",
+		"firmware.bios.about": "PocketStationin oma ohjelma, 16 kt, luettu oikeasta laitteesta. Sen valikko käynnistää jokaisen sovelluksen, joten mikään ei toimi ilman sitä.",
+		"setting.hardware_id": "Laitteistotunnus",
+		"setting.hardware_id.about": "PocketStationin sarjanumero kahdeksana heksadesimaalinumerona. Jokaisella laitteella on omansa, ja jotkin pelit lukevat sen: erään pelin oheissovellus laskee siitä arvon. Se on osa konetta, joten tallenne tarvitsee saman arvon.",
+		"slot.card": "Muistikortti",
+		"slot.card.help": "PocketStationin muistikortti: kokonainen kortti (.mcd, .mcr, .mc, .mem tai 128 kt:n .bin), DexDrive-kopio (.gme), yksi tallennus (.mcs) tai yksi sovellus (.pss). Pokket päättelee sen tiedoston sisällöstä. PocketStationin oma valikko, sen BIOSissa, käynnistää kortin sovellukset.",
+		"slot.savedata": "Tallennustiedot",
+		"slot.savedata.help": "Muistikortti, jolla aloitetaan yllä olevan sijaan. Tämä on tiedosto, jonka Emulaattori > Vie tallennustiedot... kirjoittaa. Aseta se takaisin samalla nimellä, card.mcd, jatkaaksesi siitä, mihin toinen ajo päättyi. Tiedostoa ei koskaan muuteta. Jätä tyhjäksi aloittaaksesi yllä olevalla kortilla."
+	}
+}

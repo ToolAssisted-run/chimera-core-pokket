@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "「%1」為 %2 位元組。PocketStation 的 BIOS 為 16384 位元組。",
+		"error.hardware_id": "「%1」不是硬體 ID。請寫成 8 位十六進位數字，例如 410000D3。",
+		"error.no_bios": "未提供 PocketStation 的 BIOS（%1）。沒有它，機器無法啟動。",
+		"error.no_card": "專案中沒有記憶卡檔案。",
+		"error.no_machine": "記憶體不足，無法建立機器。",
+		"error.not_card": "「%1」（%2 位元組）不是 PocketStation 的記憶卡、存檔或應用程式。",
+		"error.not_read": "無法讀取「%1」。",
+		"error.save_name": "存檔資料檔名為「%1」。只能放回本核心匯出的檔案「%2」。",
+		"error.save_size": "「%1」為 %2 位元組。本核心匯出的記憶卡為 131072 位元組。",
+		"firmware.bios": "PocketStation BIOS",
+		"firmware.bios.about": "PocketStation 自身的程式，16 KB，從實機中讀出。所有應用程式都由它的選單啟動，沒有它什麼都無法執行。",
+		"setting.hardware_id": "硬體 ID",
+		"setting.hardware_id.about": "PocketStation 的序號，8 位十六進位數字。每台機器各不相同，有些遊戲會讀取它：某款遊戲的連動應用程式會依它算出等級。它是機器的一部分，因此影片需要相同的值。",
+		"slot.card": "記憶卡",
+		"slot.card.help": "PocketStation 的記憶卡：整張卡（.mcd、.mcr、.mc、.mem，或 128 KB 的 .bin）、DexDrive 傾印（.gme）、單一存檔（.mcs）或單一應用程式（.pss）。Pokket 依檔案內容判斷類型。卡上的應用程式由 PocketStation 自身 BIOS 中的選單啟動。",
+		"slot.savedata": "存檔資料",
+		"slot.savedata.help": "用來取代上方那張卡啟動的記憶卡。這是「模擬器 > 匯出存檔資料...」所寫出的檔案。若要接續另一次執行停止的進度，請以相同的名稱 card.mcd 放回此處。此檔案不會被更動。留空則以上方的卡啟動。"
+	}
+}

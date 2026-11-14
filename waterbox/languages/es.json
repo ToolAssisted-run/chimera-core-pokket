@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' tiene %2 bytes. La BIOS de la PocketStation tiene 16384 bytes.",
+		"error.hardware_id": "'%1' no es un ID de hardware. Escríbalo como ocho dígitos hexadecimales, por ejemplo 410000D3.",
+		"error.no_bios": "No se ha indicado la BIOS de la PocketStation, %1. La máquina no puede arrancar sin ella.",
+		"error.no_card": "El proyecto no tiene ningún archivo de tarjeta de memoria.",
+		"error.no_machine": "No había memoria suficiente para crear la máquina.",
+		"error.not_card": "'%1' (%2 bytes) no es una tarjeta de memoria, una partida guardada ni una aplicación de PocketStation.",
+		"error.not_read": "No se pudo leer '%1'.",
+		"error.save_name": "El archivo de datos guardados se llama '%1'. Solo se puede volver a poner el archivo que exporta este núcleo, '%2'.",
+		"error.save_size": "'%1' tiene %2 bytes. Una tarjeta de memoria exportada por este núcleo tiene 131072 bytes.",
+		"firmware.bios": "BIOS de la PocketStation",
+		"firmware.bios.about": "El programa propio de la PocketStation, de 16 KB, volcado de una unidad real. Su menú inicia todas las aplicaciones, así que nada funciona sin ella.",
+		"setting.hardware_id": "ID de hardware",
+		"setting.hardware_id.about": "El número de serie de la PocketStation, en ocho dígitos hexadecimales. Cada unidad tiene el suyo y algunos juegos lo leen: la aplicación complementaria de un juego calcula un rango a partir de él. Forma parte de la máquina, así que una película necesita el mismo valor.",
+		"slot.card": "Tarjeta de memoria",
+		"slot.card.help": "La tarjeta de memoria de la PocketStation: una tarjeta entera (.mcd, .mcr, .mc, .mem, o un .bin de 128 KB), un volcado de DexDrive (.gme), una partida guardada (.mcs) o una aplicación (.pss). Pokket lo deduce del contenido del archivo. El propio menú de la PocketStation, en su BIOS, inicia las aplicaciones de la tarjeta.",
+		"slot.savedata": "Datos guardados",
+		"slot.savedata.help": "Una tarjeta de memoria con la que empezar en lugar de la de arriba. Este es el archivo que escribe Emulador > Exportar datos guardados... Vuelva a ponerlo con el mismo nombre, card.mcd, para continuar donde se detuvo otra ejecución. El archivo nunca se modifica. Déjelo vacío para empezar con la tarjeta de arriba."
+	}
+}

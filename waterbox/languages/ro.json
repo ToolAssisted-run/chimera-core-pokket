@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' are %2 octeți. BIOS-ul PocketStation are 16384 octeți.",
+		"error.hardware_id": "'%1' nu este un ID hardware. Scrie-l ca opt cifre hexazecimale, de exemplu 410000D3.",
+		"error.no_bios": "BIOS-ul PocketStation, %1, nu a fost dat. Fără el mașina nu poate porni.",
+		"error.no_card": "Proiectul nu are niciun fișier de card de memorie.",
+		"error.no_machine": "Nu a fost destulă memorie pentru a crea mașina.",
+		"error.not_card": "'%1' (%2 octeți) nu este un card de memorie, o salvare sau o aplicație PocketStation.",
+		"error.not_read": "Nu s-a putut citi '%1'.",
+		"error.save_name": "Fișierul cu date salvate se numește '%1'. Se poate pune înapoi doar fișierul pe care îl exportă acest core, '%2'.",
+		"error.save_size": "'%1' are %2 octeți. Un card de memorie exportat de acest core are 131072 octeți.",
+		"firmware.bios": "BIOS PocketStation",
+		"firmware.bios.about": "Programul propriu al PocketStation, 16 KB, citit dintr-un aparat real. Meniul lui pornește fiecare aplicație, așa că fără el nu merge nimic.",
+		"setting.hardware_id": "ID hardware",
+		"setting.hardware_id.about": "Numărul de serie al PocketStation, ca opt cifre hexazecimale. Fiecare aparat îl are pe al lui, iar unele jocuri îl citesc: aplicația însoțitoare a unui joc calculează din el un rang. Face parte din mașină, deci un film are nevoie de aceeași valoare.",
+		"slot.card": "Card de memorie",
+		"slot.card.help": "Cardul de memorie al PocketStation: un card întreg (.mcd, .mcr, .mc, .mem sau un .bin de 128 KB), o copie DexDrive (.gme), o salvare (.mcs) sau o aplicație (.pss). Pokket își dă seama din conținutul fișierului. Meniul propriu al PocketStation, din BIOS-ul ei, pornește aplicațiile de pe card.",
+		"slot.savedata": "Date salvate",
+		"slot.savedata.help": "Un card de memorie cu care să pornești în locul celui de mai sus. Acesta este fișierul pe care îl scrie Emulator > Export Save Data... Pune-l înapoi sub același nume, card.mcd, ca să continui de unde s-a oprit altă rulare. Fișierul nu este schimbat niciodată. Lasă gol ca să pornești cu cardul de mai sus."
+	}
+}

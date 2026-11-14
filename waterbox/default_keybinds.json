@@ -1,0 +1,15 @@
+{
+  "_comment": [
+    "Default bindings for the PocketStation's buttons: the arrow keys and the first game controller's directional pad and left stick are the four directions, and Z or the controller's A is Action. Reset, the button behind the case, is Backspace or the controller's Back."
+  ],
+  "AllTrollers": {
+    "PocketStation": {
+      "Up": "Up, J1 POV0U, X1 DpadUp, X1 LStickUp",
+      "Right": "Right, J1 POV0R, X1 DpadRight, X1 LStickRight",
+      "Down": "Down, J1 POV0D, X1 DpadDown, X1 LStickDown",
+      "Left": "Left, J1 POV0L, X1 DpadLeft, X1 LStickLeft",
+      "Action": "Z, J1 B1, X1 A",
+      "Reset": "Backspace, J1 B9, X1 Back"
+    }
+  }
+}

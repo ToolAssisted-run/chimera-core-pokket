@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' %2 bájt. A PocketStation BIOS 16384 bájt.",
+		"error.hardware_id": "'%1' nem hardverazonosító. Írja be nyolc hexadecimális számjeggyel, például 410000D3.",
+		"error.no_bios": "A PocketStation BIOS (%1) nincs megadva. Nélküle a gép nem tud elindulni.",
+		"error.no_card": "A projektben nincs memóriakártya-fájl.",
+		"error.no_machine": "Nem volt elég memória a gép létrehozásához.",
+		"error.not_card": "'%1' (%2 bájt) nem PocketStation memóriakártya, mentés vagy alkalmazás.",
+		"error.not_read": "'%1' nem olvasható.",
+		"error.save_name": "A mentési adat fájl neve '%1'. Csak az a fájl tehető vissza, amelyet ez a mag exportál: '%2'.",
+		"error.save_size": "'%1' %2 bájt. Az e mag által exportált memóriakártya 131072 bájt.",
+		"firmware.bios": "PocketStation BIOS",
+		"firmware.bios.about": "A PocketStation saját programja, 16 KB, egy valódi készülékből kiolvasva. A menüje indít minden alkalmazást, így nélküle semmi sem fut.",
+		"setting.hardware_id": "Hardverazonosító",
+		"setting.hardware_id.about": "A PocketStation sorozatszáma nyolc hexadecimális számjeggyel. Minden készüléknek saját van, és egyes játékok kiolvassák: egy játék kísérőalkalmazása rangot számol belőle. A gép része, ezért egy filmnek ugyanez az érték kell.",
+		"slot.card": "Memóriakártya",
+		"slot.card.help": "A PocketStation memóriakártyája: egy teljes kártya (.mcd, .mcr, .mc, .mem vagy egy 128 KB-os .bin), egy DexDrive-másolat (.gme), egy mentés (.mcs) vagy egy alkalmazás (.pss). A Pokket a fájl tartalmából állapítja meg, melyik. A PocketStation saját menüje, a BIOS-ában, indítja a kártyán lévő alkalmazásokat.",
+		"slot.savedata": "Mentési adat",
+		"slot.savedata.help": "Memóriakártya, amellyel a fenti helyett indul a gép. Ez az a fájl, amelyet az Emulátor > Mentési adat exportálása... ír ki. Tegye vissza ugyanazzal a névvel, card.mcd néven, hogy onnan folytassa, ahol egy másik futtatás megállt. A fájl soha nem változik. Hagyja üresen, ha a fenti kártyával akar indulni."
+	}
+}

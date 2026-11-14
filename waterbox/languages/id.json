@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' berukuran %2 byte. BIOS PocketStation berukuran 16384 byte.",
+		"error.hardware_id": "'%1' bukan ID perangkat keras. Tulis sebagai delapan digit heksadesimal, misalnya 410000D3.",
+		"error.no_bios": "BIOS PocketStation, %1, tidak diberikan. Mesin tidak bisa dimulai tanpanya.",
+		"error.no_card": "Tidak ada berkas kartu memori di proyek.",
+		"error.no_machine": "Memori tidak cukup untuk membuat mesin.",
+		"error.not_card": "'%1' (%2 byte) bukan kartu memori, simpanan, atau aplikasi PocketStation.",
+		"error.not_read": "Tidak dapat membaca '%1'.",
+		"error.save_name": "Berkas data simpanan bernama '%1'. Hanya berkas yang diekspor core ini, '%2', yang bisa dikembalikan.",
+		"error.save_size": "'%1' berukuran %2 byte. Kartu memori yang diekspor core ini berukuran 131072 byte.",
+		"firmware.bios": "BIOS PocketStation",
+		"firmware.bios.about": "Program milik PocketStation sendiri, 16 KB, dibaca dari unit asli. Menunya memulai setiap aplikasi, jadi tanpa itu tidak ada yang berjalan.",
+		"setting.hardware_id": "ID perangkat keras",
+		"setting.hardware_id.about": "Nomor seri PocketStation, sebagai delapan digit heksadesimal. Setiap unit punya nomornya sendiri, dan beberapa game membacanya: aplikasi pendamping sebuah game menghitung peringkat darinya. Ini bagian dari mesin, jadi movie memerlukan nilai yang sama.",
+		"slot.card": "Kartu memori",
+		"slot.card.help": "Kartu memori PocketStation: satu kartu utuh (.mcd, .mcr, .mc, .mem, atau .bin 128 KB), salinan DexDrive (.gme), satu simpanan (.mcs), atau satu aplikasi (.pss). Pokket menentukannya dari isi berkas. Menu PocketStation sendiri, di BIOS-nya, memulai aplikasi di kartu.",
+		"slot.savedata": "Data simpanan",
+		"slot.savedata.help": "Kartu memori untuk memulai sebagai ganti kartu di atas. Ini adalah berkas yang ditulis oleh Emulator > Export Save Data.... Kembalikan dengan nama yang sama, card.mcd, untuk melanjutkan dari tempat run lain berhenti. Berkas tidak pernah diubah. Biarkan kosong untuk memulai dengan kartu di atas."
+	}
+}

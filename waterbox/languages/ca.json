@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' té %2 bytes. La BIOS de la PocketStation té 16384 bytes.",
+		"error.hardware_id": "'%1' no és un identificador de maquinari. Escriviu-lo com a vuit xifres hexadecimals, per exemple 410000D3.",
+		"error.no_bios": "No s'ha indicat la BIOS de la PocketStation, %1. La màquina no pot arrencar sense ella.",
+		"error.no_card": "El projecte no té cap fitxer de targeta de memòria.",
+		"error.no_machine": "No hi havia prou memòria per crear la màquina.",
+		"error.not_card": "'%1' (%2 bytes) no és ni una targeta de memòria, ni una partida desada, ni una aplicació de PocketStation.",
+		"error.not_read": "No s'ha pogut llegir '%1'.",
+		"error.save_name": "El fitxer de dades de partida es diu '%1'. Només es pot tornar a posar el fitxer que exporta aquest nucli, '%2'.",
+		"error.save_size": "'%1' té %2 bytes. Una targeta de memòria exportada per aquest nucli té 131072 bytes.",
+		"firmware.bios": "BIOS de la PocketStation",
+		"firmware.bios.about": "El programa propi de la PocketStation, de 16 KB, bolcat d'una unitat real. El seu menú inicia totes les aplicacions, així que res no funciona sense ella.",
+		"setting.hardware_id": "Identificador de maquinari",
+		"setting.hardware_id.about": "El número de sèrie de la PocketStation, en vuit xifres hexadecimals. Cada unitat té el seu, i alguns jocs el llegeixen: l'aplicació complementària d'un joc en calcula un rang. Forma part de la màquina, així que una pel·lícula necessita el mateix valor.",
+		"slot.card": "Targeta de memòria",
+		"slot.card.help": "La targeta de memòria de la PocketStation: una targeta sencera (.mcd, .mcr, .mc, .mem, o un .bin de 128 KB), un bolcat de DexDrive (.gme), una partida desada (.mcs) o una aplicació (.pss). Pokket ho dedueix del contingut del fitxer. El menú propi de la PocketStation, a la seva BIOS, inicia les aplicacions de la targeta.",
+		"slot.savedata": "Dades de partida",
+		"slot.savedata.help": "Una targeta de memòria amb què començar en lloc de la de dalt. És el fitxer que escriu Emulador > Exporta les dades de partida... Torneu-lo a posar amb el mateix nom, card.mcd, per continuar des d'on s'havia aturat una altra execució. El fitxer mai no es modifica. Deixeu-lo buit per començar amb la targeta de dalt."
+	}
+}

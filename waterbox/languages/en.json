@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' is %2 bytes. The PocketStation BIOS is 16384 bytes.",
+		"error.hardware_id": "'%1' is not a hardware ID. Write it as eight hex digits, such as 410000D3.",
+		"error.no_bios": "The PocketStation BIOS, %1, was not given. The machine cannot start without it.",
+		"error.no_card": "No memory card file is in the project.",
+		"error.no_machine": "There was not enough memory to make the machine.",
+		"error.not_card": "'%1' (%2 bytes) is not a PocketStation memory card, save or app.",
+		"error.not_read": "Could not read '%1'.",
+		"error.save_name": "The save data file is named '%1'. Only the file this core exports, '%2', can be put back.",
+		"error.save_size": "'%1' is %2 bytes. A memory card exported by this core is 131072 bytes.",
+		"firmware.bios": "PocketStation BIOS",
+		"firmware.bios.about": "The PocketStation's own program, 16 KB, dumped from a real unit. Its menu starts every app, so nothing runs without it.",
+		"setting.hardware_id": "Hardware ID",
+		"setting.hardware_id.about": "The PocketStation's serial number, as eight hex digits. Every unit has its own, and some games read it: one game's companion app works out a rank from it. It is part of the machine, so a movie needs the same value.",
+		"slot.card": "Memory card",
+		"slot.card.help": "The PocketStation's memory card: a whole card (.mcd, .mcr, .mc, .mem, or a .bin of 128 KB), a DexDrive dump (.gme), one save (.mcs) or one app (.pss). Pokket works out which from the file's contents. The PocketStation's own menu, in its BIOS, starts the apps on the card.",
+		"slot.savedata": "Save data",
+		"slot.savedata.help": "A memory card to start with in place of the one above. This is the file that Emulator > Export Save Data... writes. Put it back under the same name, card.mcd, to continue from where another run stopped. The file is never changed. Leave it empty to start with the card above."
+	}
+}

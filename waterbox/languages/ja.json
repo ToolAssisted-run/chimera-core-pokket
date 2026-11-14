@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' は %2 バイトです。PocketStation の BIOS は 16384 バイトです。",
+		"error.hardware_id": "'%1' はハードウェア ID ではありません。410000D3 のように、16 進数 8 桁で書いてください。",
+		"error.no_bios": "PocketStation の BIOS（%1）が指定されていません。これがないとマシンを起動できません。",
+		"error.no_card": "プロジェクトにメモリーカードのファイルがありません。",
+		"error.no_machine": "マシンを作るためのメモリーが足りませんでした。",
+		"error.not_card": "'%1'（%2 バイト）は、PocketStation のメモリーカード、セーブ、アプリのいずれでもありません。",
+		"error.not_read": "'%1' を読み込めませんでした。",
+		"error.save_name": "セーブデータのファイル名は '%1' です。元に戻せるのは、このコアが書き出すファイル '%2' だけです。",
+		"error.save_size": "'%1' は %2 バイトです。このコアが書き出すメモリーカードは 131072 バイトです。",
+		"firmware.bios": "PocketStation の BIOS",
+		"firmware.bios.about": "PocketStation 自身のプログラム（16 KB）で、実機から吸い出したもの。すべてのアプリはそのメニューから起動するため、これがないと何も動きません。",
+		"setting.hardware_id": "ハードウェア ID",
+		"setting.hardware_id.about": "PocketStation のシリアル番号（16 進数 8 桁）。本体ごとに異なり、これを読むゲームもあります。あるゲームの連動アプリは、ここからランクを決めます。マシンの一部なので、ムービーには同じ値が必要です。",
+		"slot.card": "メモリーカード",
+		"slot.card.help": "PocketStation のメモリーカード：カード全体（.mcd、.mcr、.mc、.mem、または 128 KB の .bin）、DexDrive のダンプ（.gme）、セーブ 1 つ（.mcs）、アプリ 1 つ（.pss）のいずれか。Pokket はファイルの中身から種類を判断します。カード上のアプリは、BIOS にある PocketStation 自身のメニューが起動します。",
+		"slot.savedata": "セーブデータ",
+		"slot.savedata.help": "上のカードの代わりに使うメモリーカード。このファイルは、エミュレーター > セーブデータを書き出す... が書き出すものです。別の実行が止まった所から続けるには、同じ名前 card.mcd で元に戻してください。ファイルは変更されません。空のままにすると、上のカードで始まります。"
+	}
+}

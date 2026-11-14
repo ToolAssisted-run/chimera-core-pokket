@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' fait %2 octets. Le BIOS de la PocketStation fait 16384 octets.",
+		"error.hardware_id": "'%1' n'est pas un identifiant matériel. Écrivez-le en huit chiffres hexadécimaux, par exemple 410000D3.",
+		"error.no_bios": "Le BIOS de la PocketStation, %1, n'a pas été fourni. La machine ne peut pas démarrer sans lui.",
+		"error.no_card": "Le projet ne contient aucun fichier de carte mémoire.",
+		"error.no_machine": "La mémoire n'a pas suffi pour créer la machine.",
+		"error.not_card": "'%1' (%2 octets) n'est ni une carte mémoire, ni une sauvegarde, ni une application de PocketStation.",
+		"error.not_read": "Impossible de lire '%1'.",
+		"error.save_name": "Le fichier de données de sauvegarde s'appelle '%1'. Seul le fichier que ce core exporte, '%2', peut être remis.",
+		"error.save_size": "'%1' fait %2 octets. Une carte mémoire exportée par ce core fait 131072 octets.",
+		"firmware.bios": "BIOS de la PocketStation",
+		"firmware.bios.about": "Le programme propre de la PocketStation, 16 Ko, extrait d'un appareil réel. Son menu lance chaque application : rien ne fonctionne sans lui.",
+		"setting.hardware_id": "Identifiant matériel",
+		"setting.hardware_id.about": "Le numéro de série de la PocketStation, en huit chiffres hexadécimaux. Chaque appareil a le sien, et certains jeux le lisent : l'application compagnon d'un jeu en tire un rang. Il fait partie de la machine, donc un film a besoin de la même valeur.",
+		"slot.card": "Carte mémoire",
+		"slot.card.help": "La carte mémoire de la PocketStation : une carte entière (.mcd, .mcr, .mc, .mem, ou un .bin de 128 Ko), une copie DexDrive (.gme), une sauvegarde (.mcs) ou une application (.pss). Pokket le déduit du contenu du fichier. Le menu propre de la PocketStation, dans son BIOS, lance les applications de la carte.",
+		"slot.savedata": "Données de sauvegarde",
+		"slot.savedata.help": "Une carte mémoire avec laquelle démarrer à la place de celle du dessus. C'est le fichier qu'écrit Émulateur > Exporter les données de sauvegarde... Remettez-le sous le même nom, card.mcd, pour reprendre là où une autre partie s'est arrêtée. Le fichier n'est jamais modifié. Laissez vide pour démarrer avec la carte du dessus."
+	}
+}

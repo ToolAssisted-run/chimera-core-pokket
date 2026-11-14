@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' hat %2 Byte. Das PocketStation-BIOS hat 16384 Byte.",
+		"error.hardware_id": "'%1' ist keine Hardware-ID. Schreibe sie als acht Hexadezimalziffern, zum Beispiel 410000D3.",
+		"error.no_bios": "Das PocketStation-BIOS, %1, wurde nicht angegeben. Ohne es kann die Maschine nicht starten.",
+		"error.no_card": "Im Projekt ist keine Speicherkarten-Datei.",
+		"error.no_machine": "Es war nicht genug Speicher da, um die Maschine zu erstellen.",
+		"error.not_card": "'%1' (%2 Byte) ist keine PocketStation-Speicherkarte, kein Spielstand und keine App.",
+		"error.not_read": "'%1' konnte nicht gelesen werden.",
+		"error.save_name": "Die Datei mit den Speicherdaten heißt '%1'. Nur die Datei, die dieser Core exportiert, '%2', kann zurückgelegt werden.",
+		"error.save_size": "'%1' hat %2 Byte. Eine von diesem Core exportierte Speicherkarte hat 131072 Byte.",
+		"firmware.bios": "PocketStation-BIOS",
+		"firmware.bios.about": "Das eigene Programm der PocketStation, 16 KB, aus einem echten Gerät ausgelesen. Sein Menü startet jede App, daher läuft ohne es nichts.",
+		"setting.hardware_id": "Hardware-ID",
+		"setting.hardware_id.about": "Die Seriennummer der PocketStation als acht Hexadezimalziffern. Jedes Gerät hat seine eigene, und manche Spiele lesen sie: die Begleit-App eines Spiels berechnet daraus einen Rang. Sie gehört zur Maschine, daher braucht ein Film denselben Wert.",
+		"slot.card": "Speicherkarte",
+		"slot.card.help": "Die Speicherkarte der PocketStation: eine ganze Karte (.mcd, .mcr, .mc, .mem oder eine .bin mit 128 KB), ein DexDrive-Abbild (.gme), ein Spielstand (.mcs) oder eine App (.pss). Pokket erkennt am Inhalt der Datei, was es ist. Das eigene Menü der PocketStation, in ihrem BIOS, startet die Apps auf der Karte.",
+		"slot.savedata": "Speicherdaten",
+		"slot.savedata.help": "Eine Speicherkarte, mit der anstelle der obigen begonnen wird. Dies ist die Datei, die Emulator > Export Save Data... schreibt. Lege sie unter demselben Namen card.mcd zurück, um dort fortzusetzen, wo ein anderer Lauf aufgehört hat. Die Datei wird nie verändert. Lass das Feld leer, um mit der obigen Karte zu beginnen."
+	}
+}

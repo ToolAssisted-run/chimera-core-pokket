@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' è di %2 byte. Il BIOS della PocketStation è di 16384 byte.",
+		"error.hardware_id": "'%1' non è un ID hardware. Scriverlo come otto cifre esadecimali, per esempio 410000D3.",
+		"error.no_bios": "Il BIOS della PocketStation, %1, non è stato fornito. Senza di esso la macchina non può partire.",
+		"error.no_card": "Nel progetto non c'è alcun file di memory card.",
+		"error.no_machine": "La memoria non bastava per creare la macchina.",
+		"error.not_card": "'%1' (%2 byte) non è una memory card, un salvataggio né un'applicazione della PocketStation.",
+		"error.not_read": "Impossibile leggere '%1'.",
+		"error.save_name": "Il file dei dati di salvataggio si chiama '%1'. Si può rimettere solo il file che questo core esporta, '%2'.",
+		"error.save_size": "'%1' è di %2 byte. Una memory card esportata da questo core è di 131072 byte.",
+		"firmware.bios": "BIOS della PocketStation",
+		"firmware.bios.about": "Il programma della PocketStation stessa, 16 KB, estratto da un apparecchio reale. Il suo menu avvia ogni applicazione, quindi senza di esso non funziona nulla.",
+		"setting.hardware_id": "ID hardware",
+		"setting.hardware_id.about": "Il numero di serie della PocketStation, in otto cifre esadecimali. Ogni apparecchio ha il suo, e alcuni giochi lo leggono: l'applicazione abbinata a un gioco ne ricava un grado. Fa parte della macchina, quindi un filmato ha bisogno dello stesso valore.",
+		"slot.card": "Memory card",
+		"slot.card.help": "La memory card della PocketStation: una scheda intera (.mcd, .mcr, .mc, .mem, o un .bin da 128 KB), una copia DexDrive (.gme), un salvataggio (.mcs) o un'applicazione (.pss). Pokket lo capisce dal contenuto del file. Il menu della PocketStation stessa, nel suo BIOS, avvia le applicazioni della scheda.",
+		"slot.savedata": "Dati di salvataggio",
+		"slot.savedata.help": "Una memory card con cui partire al posto di quella sopra. Questo è il file che scrive Emulatore > Esporta dati di salvataggio... Rimetterlo con lo stesso nome, card.mcd, per proseguire da dove un'altra esecuzione si era fermata. Il file non viene mai modificato. Lasciare vuoto per partire con la scheda sopra."
+	}
+}

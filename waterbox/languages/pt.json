@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' tem %2 bytes. A BIOS da PocketStation tem 16384 bytes.",
+		"error.hardware_id": "'%1' não é um ID de hardware. Escreva-o como oito dígitos hexadecimais, por exemplo 410000D3.",
+		"error.no_bios": "A BIOS da PocketStation, %1, não foi indicada. A máquina não pode iniciar sem ela.",
+		"error.no_card": "O projeto não tem nenhum arquivo de cartão de memória.",
+		"error.no_machine": "Não havia memória suficiente para criar a máquina.",
+		"error.not_card": "'%1' (%2 bytes) não é um cartão de memória, um jogo salvo nem um aplicativo da PocketStation.",
+		"error.not_read": "Não foi possível ler '%1'.",
+		"error.save_name": "O arquivo de dados salvos se chama '%1'. Só o arquivo que este núcleo exporta, '%2', pode ser colocado de volta.",
+		"error.save_size": "'%1' tem %2 bytes. Um cartão de memória exportado por este núcleo tem 131072 bytes.",
+		"firmware.bios": "BIOS da PocketStation",
+		"firmware.bios.about": "O programa da própria PocketStation, 16 KB, extraído de um aparelho real. O seu menu inicia todos os aplicativos, então nada funciona sem ela.",
+		"setting.hardware_id": "ID de hardware",
+		"setting.hardware_id.about": "O número de série da PocketStation, em oito dígitos hexadecimais. Cada aparelho tem o seu, e alguns jogos o leem: o aplicativo companheiro de um jogo calcula uma classificação a partir dele. Faz parte da máquina, então um filme precisa do mesmo valor.",
+		"slot.card": "Cartão de memória",
+		"slot.card.help": "O cartão de memória da PocketStation: um cartão inteiro (.mcd, .mcr, .mc, .mem, ou um .bin de 128 KB), uma cópia DexDrive (.gme), um jogo salvo (.mcs) ou um aplicativo (.pss). O Pokket descobre qual pelo conteúdo do arquivo. O próprio menu da PocketStation, na sua BIOS, inicia os aplicativos do cartão.",
+		"slot.savedata": "Dados salvos",
+		"slot.savedata.help": "Um cartão de memória para começar no lugar do de cima. Este é o arquivo que Emulador > Exportar dados salvos... grava. Coloque-o de volta com o mesmo nome, card.mcd, para continuar de onde outra execução parou. O arquivo nunca é alterado. Deixe vazio para começar com o cartão de cima."
+	}
+}

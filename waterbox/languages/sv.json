@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' är %2 byte. PocketStations BIOS är 16384 byte.",
+		"error.hardware_id": "'%1' är inte ett hårdvaru-ID. Skriv det som åtta hexadecimala siffror, till exempel 410000D3.",
+		"error.no_bios": "PocketStations BIOS, %1, angavs inte. Maskinen kan inte starta utan det.",
+		"error.no_card": "Projektet har ingen minneskortsfil.",
+		"error.no_machine": "Det fanns inte tillräckligt med minne för att skapa maskinen.",
+		"error.not_card": "'%1' (%2 byte) är varken ett minneskort, ett sparat spel eller en app för PocketStation.",
+		"error.not_read": "Kunde inte läsa '%1'.",
+		"error.save_name": "Sparfilen heter '%1'. Bara filen som den här kärnan exporterar, '%2', kan läggas tillbaka.",
+		"error.save_size": "'%1' är %2 byte. Ett minneskort som den här kärnan exporterar är 131072 byte.",
+		"firmware.bios": "PocketStations BIOS",
+		"firmware.bios.about": "PocketStations eget program, 16 KB, utläst ur en riktig enhet. Dess meny startar varje app, så ingenting körs utan det.",
+		"setting.hardware_id": "Hårdvaru-ID",
+		"setting.hardware_id.about": "PocketStations serienummer som åtta hexadecimala siffror. Varje enhet har sitt eget, och vissa spel läser det: ett spels följeslagarapp räknar fram en rang ur det. Det är en del av maskinen, så en film behöver samma värde.",
+		"slot.card": "Minneskort",
+		"slot.card.help": "PocketStations minneskort: ett helt kort (.mcd, .mcr, .mc, .mem, eller en .bin på 128 KB), en DexDrive-kopia (.gme), ett sparat spel (.mcs) eller en app (.pss). Pokket avgör vilket utifrån filens innehåll. PocketStations egen meny, i dess BIOS, startar apparna på kortet.",
+		"slot.savedata": "Sparfil",
+		"slot.savedata.help": "Ett minneskort att börja med i stället för kortet ovan. Det är filen som Emulator > Exportera sparfil... skriver. Lägg tillbaka den under samma namn, card.mcd, för att fortsätta där en annan körning slutade. Filen ändras aldrig. Lämna tomt för att börja med kortet ovan."
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' %2 bayt. PocketStation BIOS'u 16384 bayttır.",
+		"error.hardware_id": "'%1' bir donanım kimliği değil. Onu sekiz onaltılık basamak olarak yazın, örneğin 410000D3.",
+		"error.no_bios": "PocketStation BIOS'u (%1) verilmedi. Makine onsuz başlayamaz.",
+		"error.no_card": "Projede hiç hafıza kartı dosyası yok.",
+		"error.no_machine": "Makineyi oluşturmak için yeterli bellek yoktu.",
+		"error.not_card": "'%1' (%2 bayt) bir PocketStation hafıza kartı, kaydı ya da uygulaması değil.",
+		"error.not_read": "'%1' okunamadı.",
+		"error.save_name": "Kayıt verisi dosyasının adı '%1'. Yalnızca bu çekirdeğin dışa aktardığı dosya, '%2', geri konabilir.",
+		"error.save_size": "'%1' %2 bayt. Bu çekirdeğin dışa aktardığı bir hafıza kartı 131072 bayttır.",
+		"firmware.bios": "PocketStation BIOS'u",
+		"firmware.bios.about": "PocketStation'ın kendi programı, 16 KB, gerçek bir cihazdan okunmuş. Menüsü her uygulamayı başlatır, bu yüzden onsuz hiçbir şey çalışmaz.",
+		"setting.hardware_id": "Donanım kimliği",
+		"setting.hardware_id.about": "PocketStation'ın seri numarası, sekiz onaltılık basamak olarak. Her cihazın kendine ait bir numarası vardır ve bazı oyunlar onu okur: bir oyunun yardımcı uygulaması ondan bir rütbe hesaplar. Makinenin parçasıdır, bu yüzden bir filmin aynı değere ihtiyacı vardır.",
+		"slot.card": "Hafıza kartı",
+		"slot.card.help": "PocketStation'ın hafıza kartı: bütün bir kart (.mcd, .mcr, .mc, .mem ya da 128 KB'lık bir .bin), bir DexDrive dökümü (.gme), bir kayıt (.mcs) ya da bir uygulama (.pss). Pokket hangisi olduğunu dosyanın içeriğinden anlar. PocketStation'ın BIOS'undaki kendi menüsü karttaki uygulamaları başlatır.",
+		"slot.savedata": "Kayıt verisi",
+		"slot.savedata.help": "Yukarıdaki kartın yerine başlanacak bir hafıza kartı. Bu, Emulator > Export Save Data... komutunun yazdığı dosyadır. Başka bir çalıştırmanın durduğu yerden sürdürmek için onu aynı adla, card.mcd olarak geri koyun. Dosya hiçbir zaman değiştirilmez. Yukarıdaki kartla başlamak için boş bırakın."
+	}
+}

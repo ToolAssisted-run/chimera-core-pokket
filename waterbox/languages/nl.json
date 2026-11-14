@@ -1,0 +1,21 @@
+{
+	"texts": {
+		"error.bios_size": "'%1' is %2 bytes. De PocketStation-BIOS is 16384 bytes.",
+		"error.hardware_id": "'%1' is geen hardware-ID. Schrijf het als acht hexadecimale cijfers, bijvoorbeeld 410000D3.",
+		"error.no_bios": "De PocketStation-BIOS, %1, is niet opgegeven. Zonder kan de machine niet starten.",
+		"error.no_card": "Het project bevat geen geheugenkaartbestand.",
+		"error.no_machine": "Er was niet genoeg geheugen om de machine te maken.",
+		"error.not_card": "'%1' (%2 bytes) is geen geheugenkaart, opgeslagen spel of app van de PocketStation.",
+		"error.not_read": "Kan '%1' niet lezen.",
+		"error.save_name": "Het bestand met savegegevens heet '%1'. Alleen het bestand dat deze core exporteert, '%2', kan worden teruggezet.",
+		"error.save_size": "'%1' is %2 bytes. Een geheugenkaart die deze core exporteert, is 131072 bytes.",
+		"firmware.bios": "PocketStation-BIOS",
+		"firmware.bios.about": "Het eigen programma van de PocketStation, 16 KB, uitgelezen uit een echt toestel. Het menu ervan start elke app, dus zonder werkt niets.",
+		"setting.hardware_id": "Hardware-ID",
+		"setting.hardware_id.about": "Het serienummer van de PocketStation, als acht hexadecimale cijfers. Elk toestel heeft zijn eigen, en sommige spellen lezen het: de begeleidende app van een spel berekent er een rang uit. Het hoort bij de machine, dus een film heeft dezelfde waarde nodig.",
+		"slot.card": "Geheugenkaart",
+		"slot.card.help": "De geheugenkaart van de PocketStation: een hele kaart (.mcd, .mcr, .mc, .mem, of een .bin van 128 KB), een DexDrive-kopie (.gme), een opgeslagen spel (.mcs) of een app (.pss). Pokket ziet aan de inhoud van het bestand wat het is. Het eigen menu van de PocketStation, in de BIOS, start de apps op de kaart.",
+		"slot.savedata": "Savegegevens",
+		"slot.savedata.help": "Een geheugenkaart om mee te beginnen in plaats van de kaart hierboven. Dit is het bestand dat Emulator > Savegegevens exporteren... schrijft. Zet het terug onder dezelfde naam, card.mcd, om verder te gaan waar een andere run is gestopt. Het bestand wordt nooit gewijzigd. Laat het leeg om met de kaart hierboven te beginnen."
+	}
+}

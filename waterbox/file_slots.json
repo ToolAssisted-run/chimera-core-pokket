@@ -1,0 +1,32 @@
+{
+  "_comment": "This file lists the kinds of file a PocketStation project can hold. Chimera's New Project window is built from it. A project is one memory card, given as a whole card or as one save or app; the save data slot can put a card exported earlier in its place.",
+  "slots": [
+    {
+      "id": "card",
+      "title": "slot.card",
+      "min": 1,
+      "max": 1,
+      "formats": [
+        "mcd",
+        "mcr",
+        "mc",
+        "mem",
+        "bin",
+        "gme",
+        "mcs",
+        "pss"
+      ],
+      "help": "slot.card.help"
+    },
+    {
+      "id": "savedata",
+      "title": "slot.savedata",
+      "min": 0,
+      "max": 1,
+      "formats": [
+        "mcd"
+      ],
+      "help": "slot.savedata.help"
+    }
+  ]
+}
