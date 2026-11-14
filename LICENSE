@@ -3,7 +3,7 @@ This repository is licensed as follows:
 - Everything original to this repository (waterbox/, tests/, the build
   scripts, meson files and docs/) is under the MIT License below. That
   includes the free stand-in BIOS the tests build
-  (tests/standin-bios/make-bios.py), which is this repository's own program.
+  (tests/standin-bios/bios.s), which is this repository's own program.
 
 - Pokket is vendored unmodified as the submodule extern/pokket. Its
   emulation core, core/ (the only part this repository builds), is under the

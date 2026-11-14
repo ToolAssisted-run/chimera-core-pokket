@@ -48,7 +48,7 @@ mkdir -p "$work"
 
 # the content: the stand-in BIOS, built from source, and upstream's homebrew card
 bios="$work/pocketstation.bin"
-python3 "$root/tests/standin-bios/make-bios.py" "$bios" || { echo "the stand-in BIOS was not built" >&2; exit 1; }
+sh "$root/tests/standin-bios/build-bios.sh" "$bios" || { echo "the stand-in BIOS was not built" >&2; exit 1; }
 card="$root/extern/pokket/pk_timing_bench/pk_timing_bench.mcs"
 [ -f "$card" ] || { echo "missing $card (git submodule update --init)" >&2; exit 1; }
 

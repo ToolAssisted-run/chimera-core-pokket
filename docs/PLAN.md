@@ -95,7 +95,8 @@ exercises every part of the machine the core passes through:
   into the card's last word, so a test can see the card the game changed
   come out of Export Save Data and go back in through the save data slot.
 
-**How it is built.** The plan was to assemble it with GNU binutils for ARM
+**How it is built** (superseded below, 2026-11-14: it is ARM assembly now).
+The plan was to assemble it with GNU binutils for ARM
 (`binutils-arm-none-eabi`). Neither the build container nor the build
 machine has an ARM assembler (no `arm-none-eabi-as`, no `clang`, no
 `llvm-mc`, checked 2026-11-14). It is therefore written as a Python script,
@@ -241,3 +242,40 @@ Not done or not proved:
   cache key that carries `meson --version`. aarch64 has not been built
   anywhere.
 - **Windows and macOS** have not run the package.
+
+## 2026-11-14: the owner's answers to the three open questions
+
+**The stand-in BIOS is ARM assembly (user-decided, 2026-11-14).** The owner
+installed `binutils-arm-none-eabi` (GNU as 2.42) in the build container and
+asked for real assembly in place of the Python encoder.
+`tests/standin-bios/bios.s` is the same program, instruction for
+instruction; `tests/standin-bios/build-bios.sh` assembles it at test time
+(`arm-none-eabi-as -march=armv4t -mcpu=arm7tdmi`, linked at 0x04000000,
+`objcopy -O binary`, padded with 0xFF to 16 KiB). `make-bios.py` is gone.
+CI installs the package in both jobs.
+
+The bytes changed: SHA-1 39324be3... (Python) became 788556ae... (GNU as),
+116 bytes apart. GNU as writes `ldr rN, =constant` as a `mov` when the
+constant fits an ARM immediate (0x700, 0x7F0, 0x0B000000, 0x400,
+0x0A000000, 0x08000000), where the Python encoder always used a literal, so
+the literal pool is shorter and moves. The disassembly is otherwise the same.
+Measured with it: `run-gate.sh` with `CHIMERA_ROOT` 19 ok, 0 failed;
+`run-frontend.sh` 4 ok; `test-packages` 0 failed. Native == sandbox ==
+rerecord as before. Two numbers moved by the few cycles the `mov`s save:
+Action held gives 31981 not-silent samples of 32000 (was 31979), and
+chimera-run counts 4995 button reads with 160 lag frames in 320 frames (was
+4996 and 159). Every other figure is the same.
+
+**The BIOS's SHA-1 is pinned once a good dump is checked (user-decided,
+2026-11-14).** Not yet: `/home/jaffar/firmware` did not exist on
+jaffanator01 on 2026-11-14, and no file under `/home/jaffar/roms` is a
+PocketStation BIOS. When one comes, it is hashed, compared with known good
+dumps and pinned in `waterbox.config`; the tests keep handing the core the
+stand-in by path (`run-wbx`/`run-native` mount the work folder's
+`pocketstation.bin`; `run-frontend.sh` and the chimera-run checks pass
+`--firmware pocketstation.bin=<path>`), so a pin must not refuse it there:
+check that before pinning.
+
+**The clock question stays open until the real BIOS boots (user-decided,
+2026-11-14).** No dump was available to boot, so what the real BIOS's date
+screen does with the clock the core set is still unknown.

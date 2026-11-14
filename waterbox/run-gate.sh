@@ -6,7 +6,7 @@
 #
 # No PocketStation program runs without a BIOS, and Sony's may not be passed
 # on. Every check therefore boots this repository's own free stand-in BIOS
-# (tests/standin-bios/make-bios.py, built here from source), with upstream's
+# (tests/standin-bios/bios.s, assembled here by build-bios.sh), with upstream's
 # homebrew pk_timing_bench.mcs as the memory card. docs/PLAN.md says what the
 # stand-in does not stand in for.
 #
@@ -46,7 +46,7 @@ printf "%-26s %-6s %s\n" "-----" "------" "------"
 
 # ---- the content: the stand-in BIOS, and three forms of one card ----
 bios="$work/pocketstation.bin"
-python3 "$root/tests/standin-bios/make-bios.py" "$bios" || { echo "the stand-in BIOS was not built" >&2; exit 1; }
+sh "$root/tests/standin-bios/build-bios.sh" "$bios" || { echo "the stand-in BIOS was not built" >&2; exit 1; }
 mcs="$root/extern/pokket/pk_timing_bench/pk_timing_bench.mcs"
 [ -f "$mcs" ] || { echo "missing $mcs (git submodule update --init)" >&2; exit 1; }
 echo "stand-in BIOS sha1 $(sha1sum "$bios" | cut -c1-40); card pk_timing_bench.mcs sha1 $(sha1sum "$mcs" | cut -c1-40)"

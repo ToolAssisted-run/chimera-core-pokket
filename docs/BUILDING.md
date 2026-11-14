@@ -24,8 +24,11 @@ Two placeholders are used throughout:
 
   ```
   sudo apt-get update
-  sudo apt-get install -y --no-install-recommends meson ninja-build build-essential python3
+  sudo apt-get install -y --no-install-recommends meson ninja-build build-essential python3 binutils-arm-none-eabi
   ```
+
+  `binutils-arm-none-eabi` (GNU as, ld and objcopy for ARM) assembles the
+  stand-in BIOS the tests boot.
 
   The compiler is the distribution's gcc. The guest is compiled by the same
   gcc through miniBox's musl specs file, so there is no cross compiler to
@@ -107,9 +110,9 @@ same commit gives the same file. A package built by hand is stamped
 ## The tests
 
 There is no free PocketStation BIOS and no program runs without one, so the
-tests boot this repository's own stand-in BIOS, written by
-`tests/standin-bios/make-bios.py` (Python only) into the test's work folder
-each run. The memory card is upstream's homebrew
+tests boot this repository's own stand-in BIOS, `tests/standin-bios/bios.s`,
+which `tests/standin-bios/build-bios.sh` assembles into the test's work
+folder each run. The memory card is upstream's homebrew
 `extern/pokket/pk_timing_bench/pk_timing_bench.mcs`. `docs/PLAN.md` says what
 the stand-in does and what it does not stand in for.
 

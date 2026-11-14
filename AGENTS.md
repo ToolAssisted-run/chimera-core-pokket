@@ -26,9 +26,9 @@ guide.
 - `waterbox/setup-guest.sh`, `waterbox/build-package.sh` - the build scripts.
 - `waterbox/run-gate.sh` - the core tests. `waterbox/tests/run-frontend.sh`
   and its helpers - the frontend tests.
-- `tests/standin-bios/make-bios.py` - the free stand-in BIOS the tests boot,
-  an ARM program written as Python calls (there is no ARM assembler on the
-  build machines).
+- `tests/standin-bios/bios.s`, `build-bios.sh` - the free stand-in BIOS the
+  tests boot: ARM assembly, assembled at test time with GNU binutils for ARM
+  (`binutils-arm-none-eabi`).
 - `docs/PLAN.md` - the design log. `docs/BUILDING.md` - the build.
 - `.github/workflows/chimera.yml` - CI and publishing.
 - `build/` - every output (gitignored).
