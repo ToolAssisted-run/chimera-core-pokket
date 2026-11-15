@@ -30,7 +30,12 @@ emulation core, unchanged, behind Chimera's interface.
 
 The PocketStation BIOS, 16 KB, dumped from a real unit. Chimera asks for it
 as `pocketstation.bin`. Nothing runs without it: even a single app is started
-by the BIOS's own menu. No BIOS or game is included.
+by the BIOS's own menu. The package knows the retail dump (revision J110,
+SHA-1 `b29a77bd9f91ce72582015ee6f6b6a740f1cc505`). No BIOS or game is
+included.
+
+To start an app: wait for the heart, press Down and then Action to leave the
+date screen, Right to move from the clock to the app, and Action.
 
 ## Using it in Chimera
 

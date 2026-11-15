@@ -41,7 +41,11 @@
 
 /* One frame: a 32nd of a second, 33000 reference cycles, as upstream's own
  * libretro core runs it. psemu_run counts reference-cycle boundaries, so a
- * sequence of frames loses nothing to rounding. */
+ * sequence of frames loses nothing to rounding. It stops after the
+ * instruction that reaches the end, which can be a few reference cycles past
+ * it when the program has slowed the CPU's clock (the real BIOS and its apps
+ * do). g_overrun carries that time into the next frame, which runs that much
+ * less, so frame n always ends within one instruction of n 32nds of a second. */
 #define FRAME_CYCLES (PSEMU_REFERENCE_CLOCK_HZ / 32u)
 #define VSYNC_NUM 32
 #define VSYNC_DEN 1
@@ -53,6 +57,7 @@
 static char g_loadError[1200];
 static psemu_t *g_ps;
 static int g_inited;
+static int64_t g_overrun;
 
 /* ---- the controls: waterbox.config "input.buttons" order ----
  * 0 Up, 1 Right, 2 Down, 3 Left, 4 Action, 5 Reset */
@@ -341,7 +346,13 @@ ECL_EXPORT void FrameAdvance(uint64_t packed)
 	 * do next has no meaning (psemu.h, psemu_cpu_faulted). The picture stays
 	 * on its last frame and the sound is silent. */
 	if (!psemu_cpu_faulted(g_ps))
-		psemu_run(g_ps, FRAME_CYCLES);
+	{
+		const int64_t budget = (int64_t)FRAME_CYCLES - g_overrun;
+		if (budget > 0)
+			g_overrun = (int64_t)psemu_run(g_ps, (uint32_t)budget) - budget;
+		else
+			g_overrun -= FRAME_CYCLES;
+	}
 	else if (!g_faultReported)
 	{
 		g_faultReported = 1;

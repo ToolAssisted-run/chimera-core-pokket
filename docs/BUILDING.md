@@ -117,8 +117,9 @@ folder each run. The memory card is upstream's homebrew
 the stand-in does and what it does not stand in for.
 
 ```
-./waterbox/run-gate.sh                                        # 17 checks, 2 skipped
-CHIMERA_ROOT=<chimera> ./waterbox/run-gate.sh                 # 19 checks
+./waterbox/run-gate.sh                                        # 17 checks, 3 skipped
+CHIMERA_ROOT=<chimera> ./waterbox/run-gate.sh                 # 19 checks, 1 skipped
+CHIMERA_ROOT=<chimera> POKKET_REAL_BIOS=<Sony's BIOS> ./waterbox/run-gate.sh   # 24 checks
 ./waterbox/tests/run-frontend.sh --chimera-root <chimera>     # 4 checks
 <chimera>/build/meson-linux/source/ui/test-packages <a folder holding only pokket.chimeraCore>
 ```
@@ -129,7 +130,14 @@ CHIMERA_ROOT=<chimera> ./waterbox/run-gate.sh                 # 19 checks
   data out and back in (and the refusal of a wrong file), the hardware ID
   setting and the reset button. With `CHIMERA_ROOT` (and the package built
   into it) two more through `chimera-run`: a project of the card, the BIOS
-  and a clock start, and the reads of the buttons reaching Chimera.
+  and a clock start, and the reads of the buttons reaching Chimera. Where
+  Sony's BIOS is on hand (`POKKET_REAL_BIOS=<file>`, or a copy at
+  `tests/roms-local/pocketstation.bin`, which git ignores), five more boot
+  it with the same card: its date screen, the menu starting the app,
+  native == sandbox == rerecord through it, the presses shaping the app,
+  and exactly 250 sound samples a frame. Without it they are one SKIP. A
+  file that is not the pinned dump fails, because the pictures compared are
+  that dump's.
 - `run-frontend.sh`: Chimera's window, headless, opens projects of the card
   with the stand-in BIOS as firmware: RAM equals the native reference's; the
   hardware ID and the clock start reach the machine; the package's keybinds
@@ -144,7 +152,9 @@ Each script ends with "<n> ok, 0 failed". A SKIP is not a pass.
 Never commit a BIOS, a game or a card that is not free. A user's own files for
 trying the core by hand go in `tests/roms-local/` (gitignored). The
 PocketStation BIOS the user brings is 16384 bytes; Chimera asks for it as
-`pocketstation.bin`.
+`pocketstation.bin`. The package pins the retail dump (revision J110), SHA-1
+`b29a77bd9f91ce72582015ee6f6b6a740f1cc505`, CRC32 `5b91d3e4`. The pin does
+not stop the tests' stand-in BIOS: `docs/PLAN.md` (2026-11-15) says why.
 
 ## Troubleshooting
 

@@ -265,6 +265,74 @@ else
 	report "reset" FAIL "date=${rdate:-?} time=${rtime:-?} (want 00170527 07124439), clock ticks counted after the reset=${rtcs:-?}"
 fi
 
+# ------------------------------------------------- with Sony's BIOS, where it is on hand
+# The real BIOS may not be passed on, so these checks run only where a copy is
+# (POKKET_REAL_BIOS, by default tests/roms-local/pocketstation.bin, which git
+# ignores) and SKIP elsewhere, as on CI. The card is the free pk_timing_bench.
+# The pictures compared are those of the one dump waterbox.config pins.
+realbios="${POKKET_REAL_BIOS:-$root/tests/roms-local/pocketstation.bin}"
+pinned=b29a77bd9f91ce72582015ee6f6b6a740f1cc505
+# the way a person starts the card's app: Down, Action (past the date
+# screen), Right (from the clock to the app), Action
+nav=(--press 2:400:2 --press 4:440:2 --press 1:480:2 --press 4:520:2)
+if [ -f "$realbios" ] && [ "$(sha1sum "$realbios" | cut -c1-40)" = "$pinned" ]; then
+	# realdir <name>: a work folder holding the real BIOS and the card
+	realdir() { local wd; wd="$(workdir "$1" "$mcs")"; cp "$realbios" "$wd/pocketstation.bin"; echo "$wd"; }
+
+	# A cold boot shows the BIOS's date screen at 1999-01-01 00:00, whatever
+	# the project's clock start: the BIOS sets the clock itself.
+	wd="$(realdir realdate)"
+	"$nat/run-wbx" "$gst/core.wbx" "$wd" --frames 420 --clock-start "$start" --dump-domain VRAM "$work/realdate.a" > /dev/null 2>&1
+	"$nat/run-wbx" "$gst/core.wbx" "$wd" --frames 420 --clock-start 946684800 --dump-domain VRAM "$work/realdate.b" > /dev/null 2>&1
+	if [ "$(sha1sum < "$work/realdate.a" | cut -c1-40)" = 8db488974391958a6997db2ec86185c477605922 ] && cmp -s "$work/realdate.a" "$work/realdate.b"; then
+		report "real-bios:date-screen" PASS "frame 420 is the BIOS's date screen, 1999-01-01 00:00, for a clock start of 2026 and of 2000"
+	else
+		report "real-bios:date-screen" FAIL "frame 420 is not the date screen of 1999-01-01, or the clock start changed it"
+	fi
+
+	# the menu starts the card's app: frame 700 is its first screen, not the menu
+	wd="$(realdir realapp)"
+	"$nat/run-wbx" "$gst/core.wbx" "$wd" --frames 700 "${nav[@]}" --dump-domain VRAM "$work/realapp.vram" > /dev/null 2>&1
+	"$nat/run-wbx" "$gst/core.wbx" "$wd" --frames 700 "${nav[@]:0:6}" --dump-domain VRAM "$work/realmenu.vram" > /dev/null 2>&1
+	if [ "$(sha1sum < "$work/realapp.vram" | cut -c1-40)" = 6a3076b77a9d8b11e6f9147de75a7bcd4fe393fe ] && ! cmp -s "$work/realapp.vram" "$work/realmenu.vram"; then
+		report "real-bios:app" PASS "Down, Action, Right, Action start pk_timing_bench: frame 700 is its first screen"
+	else
+		report "real-bios:app" FAIL "frame 700 is not pk_timing_bench's first screen (sha1 $(sha1sum < "$work/realapp.vram" | cut -c1-40))"
+	fi
+
+	# native == sandbox == rerecord through the BIOS, its menu and the app,
+	# with presses after the start, and exactly 250 samples a frame on
+	# average: the BIOS and the app slow the CPU's clock, which makes a frame
+	# end a little late, and the next frame makes up for it
+	args=(--frames 1600 "${nav[@]}")
+	f=600
+	for b in 1 4 1 4 0 2 3 4 1 1 3 4 2 0 4; do args+=(--press "$b:$f:3"); f=$((f+60)); done
+	"$nat/run-native" "$wd" "${args[@]}" 2>/dev/null | digests > "$work/real.nat"
+	"$nat/run-wbx" "$gst/core.wbx" "$wd" "${args[@]}" 2>/dev/null | digests > "$work/real.box"
+	"$nat/run-wbx" "$gst/core.wbx" "$wd" "${args[@]}" --rerecord 2>/dev/null | digests > "$work/real.rr"
+	"$nat/run-wbx" "$gst/core.wbx" "$wd" --frames 1600 "${nav[@]}" 2>/dev/null | digests > "$work/real.idle"
+	if [ -s "$work/real.box" ] && cmp -s "$work/real.nat" "$work/real.box" && cmp -s "$work/real.box" "$work/real.rr"; then
+		report "real-bios:equivalence" PASS "1600 frames through the BIOS into the app: native == sandbox == a save and a load before every frame"
+	else
+		report "real-bios:equivalence" FAIL "$(diff "$work/real.nat" "$work/real.box" | tr '\n' ' ' | head -c 80) / $(diff "$work/real.box" "$work/real.rr" | tr '\n' ' ' | head -c 80)"
+	fi
+	if [ -s "$work/real.idle" ] && ! cmp -s "$work/real.box" "$work/real.idle"; then
+		report "real-bios:input-shaped" PASS "the presses after the start changed the app"
+	else
+		report "real-bios:input-shaped" FAIL "the presses after the start changed nothing"
+	fi
+	samples="$(value audioSamples "$work/real.box")"
+	if [ "${samples:-0}" = 400000 ]; then
+		report "real-bios:frame-length" PASS "1600 frames gave 400000 samples, 250 a frame"
+	else
+		report "real-bios:frame-length" FAIL "1600 frames gave ${samples:-no} samples (want 400000)"
+	fi
+elif [ -f "$realbios" ]; then
+	report "real-bios" FAIL "$realbios is not the dump waterbox.config pins (sha1 $pinned)"
+else
+	report "real-bios" SKIP "Sony's BIOS is not on hand (POKKET_REAL_BIOS, or tests/roms-local/pocketstation.bin)"
+fi
+
 # ------------------------------------------------- through Chimera's own runner
 # Needs CHIMERA_ROOT, a Chimera checkout with this core's package installed.
 runner="${CHIMERA_ROOT:-}/build/meson-linux/chimera-run"

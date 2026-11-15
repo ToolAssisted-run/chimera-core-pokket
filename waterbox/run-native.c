@@ -8,7 +8,7 @@
  *
  * usage: run-native <workdir> [--frames N] [--exercise] [--press B:F:N]
  *        [--clock-start S] [--screenshot out.tga] [--dump-domain D out]
- *        [--savedata-out dir] [--turbo]
+ *        [--savedata-out dir] [--turbo] [--shot F:out.tga]
  */
 #include <stdint.h>
 #include <stdio.h>

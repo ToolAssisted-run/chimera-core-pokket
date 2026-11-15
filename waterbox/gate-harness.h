@@ -17,7 +17,8 @@
 #include <string.h>
 
 #define GATE_BTN_COUNT 6
-#define GATE_MAX_PRESSES 32
+#define GATE_MAX_PRESSES 128
+#define GATE_MAX_SHOTS 64
 
 struct gate_core
 {
@@ -45,6 +46,7 @@ struct gate_core
 };
 
 struct gate_press { int button; long from, count; };
+struct gate_shot { long frame; const char *path; };
 
 struct gate_opts
 {
@@ -58,6 +60,8 @@ struct gate_opts
 	long long clockStart;       /* the second the machine's clock starts at */
 	int pressCount;
 	struct gate_press presses[GATE_MAX_PRESSES];
+	int shotCount;              /* optional: pictures of chosen frames, as .tga */
+	struct gate_shot shots[GATE_MAX_SHOTS];
 };
 
 static uint64_t gate_fnv(uint64_t h, const void *p, size_t n)
@@ -161,6 +165,9 @@ static int gate_run(const struct gate_core *c, const struct gate_opts *o)
 			lag++;
 		if (o->screenshotPath && f == frames - 1)
 			gate_write_tga(o->screenshotPath, video, w, h);
+		for (int k = 0; k < o->shotCount; k++)
+			if (o->shots[k].frame == f)
+				gate_write_tga(o->shots[k].path, video, w, h);
 	}
 
 	printf("frames=%ld\n", frames);
@@ -242,6 +249,19 @@ static int gate_parse_opts(int argc, char **argv, int first, struct gate_opts *o
 				return 0;
 			}
 			o->presses[o->pressCount++] = pr;
+		}
+		else if (!strcmp(argv[i], "--shot") && i + 1 < argc)
+		{
+			/* --shot <frame>:<file.tga>: the picture of that frame (counted from 0) */
+			char *colon = strchr(argv[++i], ':');
+			if (o->shotCount >= GATE_MAX_SHOTS || !colon || colon == argv[i])
+			{
+				fprintf(stderr, "bad --shot %s (want <frame>:<file.tga>)\n", argv[i]);
+				return 0;
+			}
+			o->shots[o->shotCount].frame = strtol(argv[i], 0, 0);
+			o->shots[o->shotCount].path = colon + 1;
+			o->shotCount++;
 		}
 		else if (!strcmp(argv[i], "--rerecord")) ; /* run-wbx's; ignored here */
 		else { fprintf(stderr, "unknown argument %s\n", argv[i]); return 0; }

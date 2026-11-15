@@ -41,8 +41,9 @@ MB=<chimera>/extern/chimera-common-minibox
 meson setup "$MB/build/meson-linux" "$MB" && meson compile -C "$MB/build/meson-linux"
 meson setup build/meson-native -Dminibox_dir="$MB" && ninja -C build/meson-native
 ./waterbox/build-package.sh -m "$MB" -r <chimera>        # also builds core.wbx
-./waterbox/run-gate.sh                                     # 17 ok, 0 failed (2 SKIP)
-CHIMERA_ROOT=<chimera> ./waterbox/run-gate.sh              # 19 ok, 0 failed
+./waterbox/run-gate.sh                                     # 17 ok, 0 failed (3 SKIP)
+CHIMERA_ROOT=<chimera> ./waterbox/run-gate.sh              # 19 ok, 0 failed (1 SKIP)
+CHIMERA_ROOT=<chimera> POKKET_REAL_BIOS=<Sony's BIOS> ./waterbox/run-gate.sh   # 24 ok, 0 failed
 env -u DISPLAY QT_QPA_PLATFORM=offscreen ./waterbox/tests/run-frontend.sh --chimera-root <chimera>   # 4 ok
 <chimera>/build/meson-linux/source/ui/test-packages <folder holding only pokket.chimeraCore>
 ```

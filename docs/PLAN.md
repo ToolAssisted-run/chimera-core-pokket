@@ -36,7 +36,8 @@ on 2026-11-14).
   `pocketstation.bin` (upstream's libretro core's name for it), and never
   committed. No SHA-1 is pinned: no dump was available here to hash, and a
   pin would also refuse the free stand-in BIOS below. The core checks the
-  size.
+  size. (Superseded 2026-11-15: the retail dump is pinned, and the pin does
+  not stop the stand-in; see the last section.)
 - **One thread on one clock?** Yes, already. Upstream has no threads and
   reads no host clock (`grep` for `time(`, `clock`, `pthread`: none in
   `core/`). Its machine time is a 64-bit count of units of
@@ -219,7 +220,8 @@ memory, and this core keeps none; no honest break of it was found.
 
 Not done or not proved:
 
-- **No real PocketStation software has run.** Sony's BIOS was not on the
+- **No real PocketStation software has run.** (Superseded 2026-11-15: see
+  the last section.) Sony's BIOS was not on the
   build machine (the owner's files were still being copied; no file under
   `/home/jaffar/roms` or `/home/jaffar/firmware` is a PocketStation BIOS,
   card, `.mcs` or `.pss`), and without it no app starts. Nothing of the
@@ -237,6 +239,7 @@ Not done or not proved:
   the BIOS writes once at boot.
 - **No SHA-1 is pinned for the BIOS.** None was available to hash, and a
   pin would refuse the stand-in. The core checks only the size (16384).
+  (Superseded 2026-11-15: pinned.)
 - **CI has not run**: nothing is pushed. The workflow is written from
   chimera-core-stella's, with the x86_64 and aarch64 runners and a miniBox
   cache key that carries `meson --version`. aarch64 has not been built
@@ -274,8 +277,186 @@ dumps and pinned in `waterbox.config`; the tests keep handing the core the
 stand-in by path (`run-wbx`/`run-native` mount the work folder's
 `pocketstation.bin`; `run-frontend.sh` and the chimera-run checks pass
 `--firmware pocketstation.bin=<path>`), so a pin must not refuse it there:
-check that before pinning.
+check that before pinning. (Done 2026-11-15: pinned, and checked; see the
+last section.)
 
 **The clock question stays open until the real BIOS boots (user-decided,
 2026-11-14).** No dump was available to boot, so what the real BIOS's date
-screen does with the clock the core set is still unknown.
+screen does with the clock the core set is still unknown. (Answered
+2026-11-15: the BIOS sets the clock to 1999-01-01 itself at a cold boot.
+What to do about it is put to the owner in the last section.)
+
+## 2026-11-15: Sony's BIOS and 110 real programs (issue 575)
+
+Run on jaffanator01 in the `chimera-dev` container, against Chimera
+a0b446f8, with the owner's files: the BIOS in `/home/jaffar/firmware` and
+110 programs in `/home/jaffar/roms/pocketstation`. None of them is in this
+repository.
+
+**The BIOS dump is good.** `pocketstation.bin`, 16384 bytes, SHA-1
+`b29a77bd9f91ce72582015ee6f6b6a740f1cc505`, CRC32 `5b91d3e4`, MD5
+`0e4712cdf113190a012c5fb415060ec7`. It is the main PocketStation entry of
+the retrobios collection's `database.json` (the other entry, SHA-1
+`6ae88049...`, is the J061 prototype, 60 bytes apart). Its version tags
+read `C110` at 0x1DFC and `J110` at 0x3FFC: the retail revision. Its
+FNV-1a hash (the one upstream's `known_bios_hashes` uses) is `0xDDF1F248`,
+not the `0xB2E46838` upstream lists for J110. So upstream's
+`psemu_settings_offsets_known` says no for this dump. Nothing in this core
+calls it, so nothing changes; why upstream's hash differs is not known here.
+
+**The BIOS's SHA-1 is pinned** in `waterbox.config` (the owner's decision of
+2026-11-14). The plan feared a pin would refuse the free stand-in BIOS the
+tests use. It does not, and no setting or second declaration is needed:
+
+- `run-native` and `run-wbx` mount the work folder's file directly; no hash
+  is asked.
+- `chimera-run --new-project --firmware` pins the hash of the file it is
+  given, and a project then looks for that hash. The two chimera-run checks
+  pass with the stand-in.
+- The window's tests choose the stand-in by path, as a person does with
+  Select File for a project already made, and open projects pinned to its
+  hash. `run-frontend.sh` passes: 4 ok.
+- Chimera's engine calls a file of the right size and another hash
+  "unrecognised, used anyway" (`ce_firmware_state`), never refused.
+
+What a person sees: the window's firmware list marks Sony's retail dump as
+good and any other 16 KiB file as one it does not know. The New Project
+window's firmware page asks for the pinned dump. Other cores keep a free
+firmware set beside a pinned one with a setting (geartowns' `freeTownsRoms`
+picks between two pinned sets); that adds a setting a person sees, and this
+core does not need it, because its free BIOS is only for the tests.
+`nameHints` is gone from the entry: Chimera reads hints only for an entry
+with no SHA-1.
+
+**How a program is started.** As on a real unit, and as upstream's README
+says: the BIOS shows HELLO and a heart (frames 0 to about 330), then its
+date screen. Down, then Action, leave it for the clock; Right moves to the
+first app on the card; Action starts it. The sweep below pressed Down at
+frame 400, Action at 440, Right at 480 and Action at 520, two frames each.
+A project holds the card, and the movie holds these presses.
+
+**Fixed: a frame ran a little long.** The real BIOS and its apps slow the
+CPU's clock (`CLK_MODE`). One instruction is then longer than one of the
+reference cycles a frame is counted in, and `psemu_run` stops after the
+instruction that crosses the end of the frame. The extra time was never
+taken back: 1600 frames of Chocobo World gave 400041 sound samples, not
+400000, so frames were about 0.01% longer than a 32nd of a second, and the
+machine's clock and sound drifted from the frame count. The adapter now
+carries each frame's overrun into the next one, which runs that much less
+(`g_overrun` in `cinterface.c`, kept in the savestate like every other
+variable of the guest). 1600 frames now give exactly 400000 samples, for
+every program measured. The stand-in BIOS never slows the clock, so its
+numbers did not move.
+
+**The clock start does not reach the real BIOS (a question for the owner).**
+The core sets the machine's clock to the project's clock start before the
+first frame. At a cold boot the real BIOS sets the clock to 1999-01-01
+00:00:00 itself and shows its date screen, so a project of 2026 and one of
+2000 give the same picture, byte for byte, at frame 420 (the
+`real-bios:date-screen` check). Upstream's notes say the same: in Pokket
+every boot is a cold boot after a new battery, because `BATT_CTRL` reads 0,
+and whether a real unit with a good battery keeps its clock is not known. A
+person sets the date with the buttons in the date screen, which a movie
+records, so nothing is lost for determinism. Three ways forward, none chosen
+here: leave it (every project starts on 1999-01-01, as a unit with a new
+battery); set the project's clock again at a fixed point after the BIOS has
+reset it (deterministic, but it writes the BIOS's RAM, and upstream's guard
+for that, `psemu_settings_offsets_known`, says no for this dump); or patch
+upstream to read a good battery (unknown hardware behaviour). The stand-in
+BIOS still shows the clock start, and the `clock-start` checks still pass.
+
+**Lag frames mean little with the real BIOS.** The five buttons share the
+interrupt controller's status register with every other interrupt, and the
+BIOS's interrupt handler reads that register on every timer and clock
+interrupt. So almost every frame "reads the controls": 14 lag frames of
+1000 in nearly every program (for Aliens, 11 of them in the boot animation,
+between frames 100 and 330). A program
+that stops its clock to sleep (Calculator, Phone Book, Hit & Blow, World
+Time, EnPKclock) shows more, 155 to 411. Telling a read of the buttons from
+a read for another interrupt would need to know which bits the program
+looks at; that is not done.
+
+**The programs.** Each of the 110 files was given as the project's card,
+run for 1000 frames natively with the presses above, and again with 24 more
+presses from frame 600 (every button, three frames each, twelve frames
+apart). The pictures of frames 300, 560 and 999 were looked at as text, and
+frame 999 of the two runs compared.
+
+- 106 loaded; 4 were refused with the core's "not a card" message:
+  `BreakThru (Jason)`, `PacClone (Jason)`, `Sample (SN Systems)` and
+  `Sporting Clays (Charles Doty)`. They are bare ARM programs (they start
+  `SN`, then code) with no PlayStation file header and no `MCX0` title, so
+  neither upstream nor the real BIOS can place them in the card's directory.
+- No program stopped the CPU (no instruction Pokket does not know).
+- 105 reached their own screen. `Rockman 3 - Part 1` is not an app: its one
+  file is game data (`CRD0`, not `MCX0`), so the BIOS lists it and does not
+  start it, as a real unit would; `Rockman 3 - Part 2` is the app, and runs.
+- In 93 the presses changed frame 999. In R4 the presses left the app for
+  the BIOS's clock, which the app allows. In 12 more the program ran and its
+  picture was right, but these presses changed nothing by frame 999:
+  `Ana-Digi Clock` (both), `Beat Timer`, `Denki`, `EnPKclock`, `Hata`,
+  `Integral`, `Line Art`, `Mimique`, `Number`, `Poketro`, `Wose`. They are
+  clocks, timers and screens of text; their controls were not worked out.
+- `Dice` is a short DexDrive file (102208 bytes, twelve blocks); upstream
+  takes it and it runs.
+- `Apple`, `Lo` and `Tetris` by SN Systems are bare apps (`.bin`, 8192 bytes,
+  with the `MCX0` title): upstream puts them on a card of their own, as a
+  `.pss`, and they run.
+
+Looked at closely, with the pictures read frame by frame: Chocobo World
+(HELLO at frame 8, the heart at 160, the date screen at 352, the clock at
+460, Chocobo World's icon in the menu at 500, the chocobo walking at 540 to
+699); Aliens, Astro Fighter, Black Jack, Block Out 1, Dice, Calculator,
+World Time (SCEI's Pocket MuuMuu programs); Brightis; Chocobo Stallion;
+Rockman 2; R4; Pocket Fighter Alpha 3 part 1; MGS Integral; Harvest Moon;
+Pocket Digimon World (Agumon); Pinball; homebrew 15 Puzzle, Tetris (both),
+Lights Out, Mine Sweeper, Pocket Sokoban, Tic-Tac-Toe, Ana-Digi Clock,
+Hata, Mimique. Text reads the right way round, nothing is mirrored, and
+tiles, cards, pieces and cursors moved with the presses (15 Puzzle's tiles,
+Tetris's piece, Lights Out's lights, Tic-Tac-Toe's marks, Dice's dice).
+
+**Determinism, with the real BIOS.** For Chocobo World, Aliens, Brightis,
+Tetris (homebrew and SN Systems), Rockman 2, Calculator and Dice, 1600
+frames through the BIOS and into the app with 33 presses: native == sandbox
+== the sandbox with a save and a load before every frame, and the sandbox
+twice gives the same result. Through Chimera's own runner, as a person
+uses the package: for Chocobo World, Tetris (SN Systems, a `.bin`), Aliens,
+Brightis, Rockman 2 and 15 Puzzle, `chimera-run --new-project` made a
+project of the card, the real BIOS and a movie of 1200 frames; played twice,
+it gave the same VRAM and RAM, and the VRAM was the native reference's under
+the same presses.
+
+**New checks** (`run-gate.sh`, "with Sony's BIOS"): they run only where the
+pinned dump is on hand (`POKKET_REAL_BIOS`, by default
+`tests/roms-local/pocketstation.bin`), and say SKIP elsewhere, as on CI. The
+card is the free `pk_timing_bench.mcs`. `real-bios:date-screen` (frame 420
+is the date screen of 1999-01-01 for two clock starts), `real-bios:app`
+(Down, Action, Right, Action start the bench: frame 700 is its first
+screen, not the menu), `real-bios:equivalence` (1600 frames, native ==
+sandbox == rerecord), `real-bios:input-shaped`, and `real-bios:frame-length`
+(1600 frames give 400000 samples). Seen to fail, each on a build with one
+change, then put back: the overrun not carried (`frame-length`: 400008
+samples); the clock set again at frame 400 (`date-screen`); Action not
+passed to the machine (`app`: frame 700 is the menu); no buttons while an
+app runs (`input-shaped`). `real-bios:equivalence` was not seen to fail, for
+the reason `savestate` was not (above).
+
+`waterbox/gate-harness.h` takes `--shot <frame>:<file.tga>` (up to 64), for
+the picture of any frame, and up to 128 presses.
+
+Measured: `run-gate.sh` 17 ok, 0 failed, 3 skipped; with `CHIMERA_ROOT` and
+the real BIOS 24 ok, 0 failed. `run-frontend.sh` 4 ok, 0 failed. Chimera's
+contract tests on a folder holding only this package: 24 PASS, 0 failed.
+`check-core-texts.py`: 17 keys, every one named.
+
+Not proved:
+
+- Chimera's window with the real BIOS (its tests use the stand-in); the
+  package path was proved through `chimera-run`.
+- The PlayStation side: docking, the PS1 game talking to its app, and
+  infra-red between two units. Chimera has one machine per project.
+- Long play: no program was played to an end, and no program's own save
+  (written to the card while it runs) was exported and taken back with the
+  real BIOS. The stand-in's `savedata` checks cover that path.
+- The 12 programs whose controls these presses did not reach.
+- Windows, macOS and aarch64, as before.
