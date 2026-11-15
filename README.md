@@ -16,8 +16,12 @@ emulation core, unchanged, behind Chimera's interface.
   app (`.pss`). Pokket works out which from the contents.
 - **The controls**: Up, Right, Down, Left, Action, and Reset (the button
   behind the case).
-- **The clock** starts at the project's clock start and runs on the
-  machine's own time, so a movie replays the same.
+- **The clock** runs on the machine's own time, so a movie replays the
+  same. Sony's BIOS starts every power-on like a unit with a new battery: it
+  sets the clock to 1999-01-01 00:00 and asks for the date, which you set
+  with the buttons (the movie records those presses). So the project's clock
+  start has no effect with Sony's BIOS; only the tests' stand-in BIOS shows
+  it.
 - **Save data**: the card is the machine's memory. Emulator > Export Save
   Data... writes it as `card.mcd` (128 KB, the layout memory card tools
   open); the project's save data slot takes that file back.

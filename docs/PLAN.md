@@ -284,7 +284,7 @@ last section.)
 2026-11-14).** No dump was available to boot, so what the real BIOS's date
 screen does with the clock the core set is still unknown. (Answered
 2026-11-15: the BIOS sets the clock to 1999-01-01 itself at a cold boot.
-What to do about it is put to the owner in the last section.)
+The owner decided to leave it, 2026-11-15; see below.)
 
 ## 2026-11-15: Sony's BIOS and 110 real programs (issue 575)
 
@@ -348,7 +348,7 @@ variable of the guest). 1600 frames now give exactly 400000 samples, for
 every program measured. The stand-in BIOS never slows the clock, so its
 numbers did not move.
 
-**The clock start does not reach the real BIOS (a question for the owner).**
+**The clock start does not reach the real BIOS, and that is left as it is (owner, 2026-11-15).**
 The core sets the machine's clock to the project's clock start before the
 first frame. At a cold boot the real BIOS sets the clock to 1999-01-01
 00:00:00 itself and shows its date screen, so a project of 2026 and one of
@@ -357,12 +357,14 @@ first frame. At a cold boot the real BIOS sets the clock to 1999-01-01
 every boot is a cold boot after a new battery, because `BATT_CTRL` reads 0,
 and whether a real unit with a good battery keeps its clock is not known. A
 person sets the date with the buttons in the date screen, which a movie
-records, so nothing is lost for determinism. Three ways forward, none chosen
-here: leave it (every project starts on 1999-01-01, as a unit with a new
-battery); set the project's clock again at a fixed point after the BIOS has
-reset it (deterministic, but it writes the BIOS's RAM, and upstream's guard
-for that, `psemu_settings_offsets_known`, says no for this dump); or patch
-upstream to read a good battery (unknown hardware behaviour). The stand-in
+records, so nothing is lost for determinism. Three ways forward were put
+to the owner: leave it (every project starts on 1999-01-01, as a unit with a
+new battery); set the project's clock again at a fixed point after the BIOS
+has reset it (deterministic, but it writes the BIOS's RAM, and upstream's
+guard for that, `psemu_settings_offsets_known`, says no for this dump); or
+patch upstream to read a good battery (unknown hardware behaviour). The
+owner chose the first: with Sony's BIOS the project's clock start has no
+effect, and the README says so. The stand-in
 BIOS still shows the clock start, and the `clock-start` checks still pass.
 
 **Lag frames mean little with the real BIOS.** The five buttons share the
